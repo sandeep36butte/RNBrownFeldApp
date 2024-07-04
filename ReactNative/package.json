@@ -1,0 +1,31 @@
+{
+  "name": "reactnative",
+  "version": "1.0.0",
+  "description": "Enable RN NewArch in BrownField Apps",
+  "main": "index.js",
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start  --experimental-debugger",
+    "lint": "./node_modules/.bin/eslint .",
+    "postinstall": "patch-package"
+  },
+  "dependencies": {
+    "react": "18.2.0",
+    "react-native": "^0.74.1"
+  },
+  "author": "sandeep.butte@nobroker.in",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.20.0",
+    "@babel/preset-env": "^7.20.0",
+    "@babel/runtime": "^7.20.0",
+    "@react-native/babel-preset": "0.74.84",
+    "@react-native/metro-config": "0.74.84",
+    "@react-native/typescript-config": "0.74.84",
+    "babel-plugin-module-resolver": "^5.0.0",
+    "patch-package": "^8.0.0",
+    "typescript": "^5.4.5"
+  },
+  "private": true
+}
