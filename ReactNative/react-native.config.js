@@ -6,10 +6,6 @@ module.exports = {
         sourceDir: '../Android', 
         packageName: 'com.example.android'
       },
-      ios:{
-        sourceDir:"../nb-ios",
-        // project: "../nb-ios/Nobroker.xcodeproj"
-      }
     },
     assets:["../Android/android/app/src/main/assets/*", "./assets/fonts/*"],
   };
