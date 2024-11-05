@@ -3,11 +3,11 @@
 module.exports = {
     project: {
       android: {
-        sourceDir: '../Android', 
+        sourceDir: '../android', 
         packageName: 'com.example.android'
       },
     },
-    assets:["../Android/android/app/src/main/assets/*", "./assets/fonts/*"],
+    assets:["../android/app/src/main/assets/*", "./assets/fonts/*"],
   };
 
   /**

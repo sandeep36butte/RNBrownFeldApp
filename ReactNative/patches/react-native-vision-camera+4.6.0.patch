@@ -1,0 +1,49 @@
+diff --git a/node_modules/react-native-vision-camera/android/CMakeLists.txt b/node_modules/react-native-vision-camera/android/CMakeLists.txt
+index 17097c1..4223767 100644
+--- a/node_modules/react-native-vision-camera/android/CMakeLists.txt
++++ b/node_modules/react-native-vision-camera/android/CMakeLists.txt
+@@ -5,6 +5,7 @@ set(PACKAGE_NAME "VisionCamera")
+ set(BUILD_DIR ${CMAKE_SOURCE_DIR}/build)
+ set(CMAKE_VERBOSE_MAKEFILE ON)
+ set(CMAKE_CXX_STANDARD 17)
++set(ENABLE_FRAME_PROCESSORS ON)
+ 
+ # Third party libraries (Prefabs)
+ find_package(ReactAndroid REQUIRED CONFIG)
+diff --git a/node_modules/react-native-vision-camera/android/gradle.properties b/node_modules/react-native-vision-camera/android/gradle.properties
+index 81ee012..3b20dce 100644
+--- a/node_modules/react-native-vision-camera/android/gradle.properties
++++ b/node_modules/react-native-vision-camera/android/gradle.properties
+@@ -14,6 +14,6 @@ org.gradle.configureondemand=true
+ # http://www.gradle.org/docs/current/userguide/multi_project_builds.html#sec:decoupled_projects
+ # org.gradle.parallel=true
+ #Fri Feb 19 20:46:14 CET 2021
+-VisionCamera_kotlinVersion=1.7.20
++VisionCamera_kotlinVersion=1.9.24
+ android.enableJetifier=true
+ android.useAndroidX=true
+diff --git a/node_modules/react-native-vision-camera/src/CameraDevices.ts b/node_modules/react-native-vision-camera/src/CameraDevices.ts
+index 5866143..e2b9d40 100644
+--- a/node_modules/react-native-vision-camera/src/CameraDevices.ts
++++ b/node_modules/react-native-vision-camera/src/CameraDevices.ts
+@@ -1,6 +1,6 @@
+ import { NativeModules, NativeEventEmitter } from 'react-native'
+ import type { CameraDevice } from './types/CameraDevice'
+-
++console.log(`Native modules inside:${JSON.stringify(NativeModules)}`);
+ const CameraDevicesManager = NativeModules.CameraDevices as {
+   getConstants: () => {
+     availableCameraDevices: CameraDevice[]
+diff --git a/node_modules/react-native-vision-camera/src/hooks/useCameraDevice.ts b/node_modules/react-native-vision-camera/src/hooks/useCameraDevice.ts
+index dcad60e..1d7ead1 100644
+--- a/node_modules/react-native-vision-camera/src/hooks/useCameraDevice.ts
++++ b/node_modules/react-native-vision-camera/src/hooks/useCameraDevice.ts
+@@ -18,7 +18,7 @@ import { useCameraDevices } from './useCameraDevices'
+  */
+ export function useCameraDevice(position: CameraPosition, filter?: DeviceFilter): CameraDevice | undefined {
+   const devices = useCameraDevices()
+-
++console.log(`Devices: ${devices}`);
+   const device = useMemo(
+     () => getCameraDevice(devices, position, filter),
+     // eslint-disable-next-line react-hooks/exhaustive-deps

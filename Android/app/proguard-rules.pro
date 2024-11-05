@@ -19,3 +19,31 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+-keep class com.nobroker.loans.models.*{*;}
+#-dontnote okhttp3.**, okio.**, retrofit2.**
+#-dontwarn retrofit2.**
+#-keep class retrofit2.** { *; }
+## Keep generic signature of Call, Response (R8 full mode strips signatures from non-kept items).
+## -keep,allowobfuscation,allowshrinking interface retrofit2.Call
+# -keep,allowobfuscation,allowshrinking class retrofit2.Response
+#
+# # With R8 full mode generic signatures are stripped for classes that are not
+# # kept. Suspend functions are wrapped in continuations where the type argument
+# # is used.
+# -keep,allowobfuscation,allowshrinking class kotlin.coroutines.Continuation
+-dontwarn com.google.mlkit.vision.barcode.Barcode
+-dontwarn com.google.mlkit.vision.common.internal.Detector
+-keep class com.facebook.hermes.unicode.** { *; }
+-keep class com.facebook.jni.** { *; }
+#Maps SDK
+-keep class com.google.maps.** { *; }
+#-keep class com.google.android.gms.maps.** { *; }
+#-keep interface com.google.android.gms.maps.** { *; }
+#-keep class * implements com.google.android.gms.maps.** { *; }
+-keep class androidx.lifecycle.DefaultLifecycleObserver
+-keep class android.arch.lifecycle.** {*;}
+-ignorewarnings
+-keep class com.adjust.sdk.** { *; }
+-keep class com.google.android.gms.gcm** { *; }
+-keep public class com.facebook.imageutils.** { public *; }

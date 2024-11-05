@@ -4,38 +4,51 @@ plugins {
     id("com.facebook.react")
 }
 
-val reactNativeDirPath = "../../ReactNative/node_modules/react-native"
-apply(from = "../../ReactNative/node_modules/@react-native-community/cli-platform-android/native_modules.gradle")
-val applyNativeModulesAppBuildGradle: groovy.lang.Closure<Any> by extra
-applyNativeModulesAppBuildGradle(project)
+val reactNativeDirPath = "../../reactnative/node_modules/react-native"
+//val hermesEnabled: Boolean by project
+//val newArchEnabled: Boolean by project
+//println("hermesEnabled by project: ${hermesEnabled.toString()}")
+//println("NewArch enabled: ${newArchEnabled.toString()}")
+//apply(from = "../../reactnative/node_modules/@react-native-community/cli-platform-android/native_modules.gradle")
+//val applyNativeModulesAppBuildGradle: groovy.lang.Closure<Any> by extra
+//applyNativeModulesAppBuildGradle(project)
 
 react {
-    root = file("../../ReactNative")
+    root = file("../../reactnative")
     reactNativeDir = file(reactNativeDirPath)
     cliFile = file("$reactNativeDirPath/cli.js")
-    codegenDir = file("../../ReactNative/node_modules/@react-native/codegen")
-    entryFile = file("../../ReactNative/index.js")
+    codegenDir = file("../../reactnative/node_modules/@react-native/codegen")
+    entryFile = file("../../reactnative/index.js")
+    autolinkLibrariesWithApp()
 }
+
+project.extensions.getByType<com.facebook.react.ReactExtension>().apply {
+    ext(project.property("hermesEnabled").toString().toBoolean())
+    ext(project.property("newArchEnabled").toString().toBoolean())
+}
+
+println("newArchEnabled12345: ${project.property("newArchEnabled").toString().toBoolean()}")
 
 val enableSeparateBuildPerCPUArchitecture = true
 
-rootProject.ext.set("minSdkVersion", 23)
-rootProject.ext.set("kotlinVersion", "1.8.20")
-rootProject.ext.set("compileSdkVersion", 33)
-rootProject.ext.set("targetSdkVersion", 33)
-//rootProject.ext.set("newArchEnabled", newArchEnabled)
-rootProject.ext.set("buildToolsVersion", "34.0.0")
+rootProject.ext.set("minSdkVersion", 24)
+rootProject.ext.set("kotlinVersion", "1.9.24")
+rootProject.ext.set("compileSdkVersion", 35)
+rootProject.ext.set("targetSdkVersion", 34)
+rootProject.ext.set("buildToolsVersion", "35.0.0")
 rootProject.ext.set("REACT_NATIVE_NODE_MODULES_DIR", file(reactNativeDirPath))
 rootProject.ext.set("reactNativeAndroidRoot", file("../../ReactNative"))
+rootProject.ext.set("hermesEnabled", true);
+rootProject.ext.set("newArchEnabled", true);
 
 android {
     namespace = "com.example.android"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.android"
-        minSdk = 23
-        targetSdk = 33
+        applicationId = "com.example"
+        minSdk = 24
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -65,6 +78,9 @@ android {
             )
         }
     }
+    android {
+        ndkVersion = "26.1.10909125"
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -76,7 +92,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.14"
     }
     packaging {
         resources {
@@ -112,3 +128,4 @@ dependencies {
     implementation("com.facebook.react:react-android")
     implementation("com.facebook.react:hermes-android")
 }
+

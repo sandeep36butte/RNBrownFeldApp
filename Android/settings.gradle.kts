@@ -10,6 +10,11 @@ pluginManagement {
         mavenCentral()
         gradlePluginPortal()
     }
+    includeBuild("../reactnative/node_modules/@react-native/gradle-plugin")
+}
+plugins { id("com.facebook.react.settings") }
+extensions.configure<com.facebook.react.ReactSettingsExtension> {
+    autolinkLibrariesFromCommand() // Ensure this method exists in ReactSettingsExtension
 }
 
 dependencyResolutionManagement {
@@ -25,8 +30,8 @@ dependencyResolutionManagement {
 
 rootProject.name = "Android"
 include(":app")
-includeBuild("../ReactNative/node_modules/@react-native/gradle-plugin")
-apply(from = "../ReactNative/node_modules/@react-native-community/cli-platform-android/native_modules.gradle")
-val applyNativeModulesSettingsGradle: groovy.lang.Closure<Any> by extra
-applyNativeModulesSettingsGradle(settings)
+includeBuild("../reactnative/node_modules/@react-native/gradle-plugin")
+apply(from = "../reactnative/node_modules/@react-native-community/cli-platform-android/native_modules.gradle")
+// val applyNativeModulesSettingsGradle: groovy.lang.Closure<Any> by extra
+// applyNativeModulesSettingsGradle(settings)
  
