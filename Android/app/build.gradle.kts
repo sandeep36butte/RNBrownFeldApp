@@ -26,8 +26,8 @@ rootProject.ext.set("targetSdkVersion", 34)
 rootProject.ext.set("buildToolsVersion", "35.0.0")
 rootProject.ext.set("REACT_NATIVE_NODE_MODULES_DIR", file(reactNativeDirPath))
 rootProject.ext.set("reactNativeAndroidRoot", file("../../ReactNative"))
-rootProject.ext.set("hermesEnabled", true);
-rootProject.ext.set("newArchEnabled", true);
+rootProject.ext.set("hermesEnabled", "true");
+rootProject.ext.set("newArchEnabled", "true");
 rootProject.ext.set("ndkVersion", "26.1.10909125")
 
 android {
