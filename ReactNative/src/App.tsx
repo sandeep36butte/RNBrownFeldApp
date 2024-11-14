@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { View, Text, StyleSheet, NativeModules } from "react-native";
-import {Camera, useCameraDevices, useCameraPermission, useCameraDevice} from "react-native-vision-camera";
+import {Camera, useCameraDevice} from "react-native-vision-camera";
 
 export default function App(){
     const isNewArchitectureEnabled = global.__turboModuleProxy != null;
@@ -8,6 +8,7 @@ export default function App(){
     console.log(`nativemodules: ${JSON.stringify(NativeModules)}`);
     const [cameraStatus, setCameraStatus] = useState<any>();
     const device = useCameraDevice('back');
+    // const device = null;
     console.log("device", device);
     useEffect(() => {
         const status = Camera.getCameraPermissionStatus();

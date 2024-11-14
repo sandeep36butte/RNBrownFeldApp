@@ -1,5 +1,5 @@
 diff --git a/node_modules/react-native-worklets-core/android/CMakeLists.txt b/node_modules/react-native-worklets-core/android/CMakeLists.txt
-index 52fdbe3..f13c7ea 100644
+index cc4cbfe..74c55db 100644
 --- a/node_modules/react-native-worklets-core/android/CMakeLists.txt
 +++ b/node_modules/react-native-worklets-core/android/CMakeLists.txt
 @@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.8)
@@ -12,17 +12,12 @@ index 52fdbe3..f13c7ea 100644
    string(APPEND CMAKE_CXX_FLAGS " -DDEBUG")
  endif()
 diff --git a/node_modules/react-native-worklets-core/android/gradle.properties b/node_modules/react-native-worklets-core/android/gradle.properties
-index 2cf6e18..2013a17 100644
+index 2cf6e18..aea54e8 100644
 --- a/node_modules/react-native-worklets-core/android/gradle.properties
 +++ b/node_modules/react-native-worklets-core/android/gradle.properties
-@@ -1,5 +1,5 @@
--Worklets_kotlinVersion=1.7.0
--Worklets_minSdkVersion=21
--Worklets_targetSdkVersion=31
--Worklets_compileSdkVersion=31
+@@ -2,4 +2,4 @@ Worklets_kotlinVersion=1.7.0
+ Worklets_minSdkVersion=21
+ Worklets_targetSdkVersion=31
+ Worklets_compileSdkVersion=31
 -Worklets_ndkversion=21.4.7075529
-+Worklets_kotlinVersion=1.9.24
-+Worklets_minSdkVersion=24
-+Worklets_targetSdkVersion=34
-+Worklets_compileSdkVersion=35
 +Worklets_ndkversion=26.1.10909125

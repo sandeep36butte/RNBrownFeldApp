@@ -4,33 +4,21 @@ plugins {
     id("com.facebook.react")
 }
 
-val reactNativeDirPath = "../../reactnative/node_modules/react-native"
-//val hermesEnabled: Boolean by project
-//val newArchEnabled: Boolean by project
-//println("hermesEnabled by project: ${hermesEnabled.toString()}")
-//println("NewArch enabled: ${newArchEnabled.toString()}")
-//apply(from = "../../reactnative/node_modules/@react-native-community/cli-platform-android/native_modules.gradle")
-//val applyNativeModulesAppBuildGradle: groovy.lang.Closure<Any> by extra
-//applyNativeModulesAppBuildGradle(project)
+val reactNativeDirPath = "../../ReactNative/node_modules/react-native"
 
 react {
-    root = file("../../reactnative")
+    root = file("../../ReactNative")
     reactNativeDir = file(reactNativeDirPath)
     cliFile = file("$reactNativeDirPath/cli.js")
-    codegenDir = file("../../reactnative/node_modules/@react-native/codegen")
-    entryFile = file("../../reactnative/index.js")
+    codegenDir = file("../../ReactNative/node_modules/@react-native/codegen")
+    entryFile = file("../../ReactNative/index.js")
     autolinkLibrariesWithApp()
-}
-
-project.extensions.getByType<com.facebook.react.ReactExtension>().apply {
-    ext(project.property("hermesEnabled").toString().toBoolean())
-    ext(project.property("newArchEnabled").toString().toBoolean())
 }
 
 println("newArchEnabled12345: ${project.property("newArchEnabled").toString().toBoolean()}")
 
 val enableSeparateBuildPerCPUArchitecture = true
-
+val enableProguardInReleaseBuilds = false
 rootProject.ext.set("minSdkVersion", 24)
 rootProject.ext.set("kotlinVersion", "1.9.24")
 rootProject.ext.set("compileSdkVersion", 35)
@@ -40,6 +28,7 @@ rootProject.ext.set("REACT_NATIVE_NODE_MODULES_DIR", file(reactNativeDirPath))
 rootProject.ext.set("reactNativeAndroidRoot", file("../../ReactNative"))
 rootProject.ext.set("hermesEnabled", true);
 rootProject.ext.set("newArchEnabled", true);
+rootProject.ext.set("ndkVersion", "26.1.10909125")
 
 android {
     namespace = "com.example.android"
@@ -70,6 +59,7 @@ android {
 
 
     buildTypes {
+        debug {  }
         release {
             isMinifyEnabled = false
             proguardFiles(
@@ -107,7 +97,6 @@ android {
         }
     }
 }
-
 dependencies {
 
     implementation(libs.androidx.core.ktx)
