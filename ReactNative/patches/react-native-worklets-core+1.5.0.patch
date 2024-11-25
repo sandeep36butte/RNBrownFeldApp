@@ -1,0 +1,48 @@
+diff --git a/node_modules/react-native-worklets-core/android/CMakeLists.txt b/node_modules/react-native-worklets-core/android/CMakeLists.txt
+index cc4cbfe..74c55db 100644
+--- a/node_modules/react-native-worklets-core/android/CMakeLists.txt
++++ b/node_modules/react-native-worklets-core/android/CMakeLists.txt
+@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.8)
+ 
+ set(CMAKE_VERBOSE_MAKEFILE ON)
+ set(CMAKE_CXX_STANDARD 17)
+-
++set(ENABLE_FRAME_PROCESSORS ON)
+ if(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+   string(APPEND CMAKE_CXX_FLAGS " -DDEBUG")
+ endif()
+diff --git a/node_modules/react-native-worklets-core/android/build.gradle b/node_modules/react-native-worklets-core/android/build.gradle
+index f2268a5..614530e 100644
+--- a/node_modules/react-native-worklets-core/android/build.gradle
++++ b/node_modules/react-native-worklets-core/android/build.gradle
+@@ -57,9 +57,17 @@ if (isNewArchitectureEnabled()) {
+ }
+ 
+ task prepareHeaders(type: Copy) {
+-  from fileTree('../cpp').filter { it.isFile() }
+-  into "${project.buildDir}/headers/rnworklets/react-native-worklets-core/"
+-  includeEmptyDirs = false
++ fileTree('../cpp').each{file -> 
++  if(file.isFile()){
++    println "copying file"
++    copy{
++      from file
++      into "${project.buildDir}/headers/rnworklets/react-native-worklets-core/"
++    }
++  }else{
++    println "Not file type"
++  }
++  }
+ }
+ 
+ task deleteCmakeCache() {
+diff --git a/node_modules/react-native-worklets-core/android/gradle.properties b/node_modules/react-native-worklets-core/android/gradle.properties
+index 2cf6e18..aea54e8 100644
+--- a/node_modules/react-native-worklets-core/android/gradle.properties
++++ b/node_modules/react-native-worklets-core/android/gradle.properties
+@@ -2,4 +2,4 @@ Worklets_kotlinVersion=1.7.0
+ Worklets_minSdkVersion=21
+ Worklets_targetSdkVersion=31
+ Worklets_compileSdkVersion=31
+-Worklets_ndkversion=21.4.7075529
++Worklets_ndkversion=26.1.10909125

@@ -5,13 +5,6 @@ plugins {
 }
 
 val reactNativeDirPath = "../../reactnative/node_modules/react-native"
-//val hermesEnabled: Boolean by project
-//val newArchEnabled: Boolean by project
-//println("hermesEnabled by project: ${hermesEnabled.toString()}")
-//println("NewArch enabled: ${newArchEnabled.toString()}")
-//apply(from = "../../reactnative/node_modules/@react-native-community/cli-platform-android/native_modules.gradle")
-//val applyNativeModulesAppBuildGradle: groovy.lang.Closure<Any> by extra
-//applyNativeModulesAppBuildGradle(project)
 
 react {
     root = file("../../reactnative")
@@ -38,8 +31,8 @@ rootProject.ext.set("targetSdkVersion", 34)
 rootProject.ext.set("buildToolsVersion", "35.0.0")
 rootProject.ext.set("REACT_NATIVE_NODE_MODULES_DIR", file(reactNativeDirPath))
 rootProject.ext.set("reactNativeAndroidRoot", file("../../ReactNative"))
-rootProject.ext.set("hermesEnabled", true);
-rootProject.ext.set("newArchEnabled", true);
+rootProject.ext.set("hermesEnabled", "true");
+rootProject.ext.set("newArchEnabled", "true");
 
 android {
     namespace = "com.example.android"
@@ -80,6 +73,11 @@ android {
     }
     android {
         ndkVersion = "26.1.10909125"
+        sourceSets {
+            getByName("main") {
+                java.srcDirs("src/main/java/com/example/android/generated")
+            }
+        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17

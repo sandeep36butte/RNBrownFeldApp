@@ -15,38 +15,17 @@ import com.facebook.soloader.SoLoader
 import com.facebook.react.defaults.DefaultReactHost;
 import com.facebook.react.defaults.DefaultReactNativeHost
 import com.facebook.react.soloader.OpenSourceMergedSoMapping
+import com.example.android.RNTurboModulePackage
 
 class AppController : Application(), ReactApplication {
 
-
-//    private val mReactNativeHost = object : ReactNativeHost(this) {
-//        override fun getUseDeveloperSupport(): Boolean {
-//            Log.d("ReactNative", BuildConfig.DEBUG.toString())
-//            return BuildConfig.DEBUG
-//        }
-//
-//        override fun getPackages(): List<ReactPackage> {
-//            Log.d("ReactNative", "GetPackages")
-//            val packages = PackageList(this).packages.toMutableList()
-//            return packages
-//        }
-//
-//        override fun getJSBundleFile(): String {
-//            Log.d("ReactNative", "GetBundle")
-//            return "assets://index.android.bundle"
-//        }
-//
-//        override fun getJSMainModuleName(): String {
-//            Log.d("ReactNative", "GetModule")
-//            return "index"
-//        }
-//    }
 
     override val reactNativeHost: ReactNativeHost =
         object : DefaultReactNativeHost(this) {
             override fun getPackages(): List<ReactPackage> {
                 Log.d("ReactNative", "GetPackages")
                 val packages = PackageList(this).packages.toMutableList()
+                packages.add(RNTurboModulePackage());
                 return packages
             }
 

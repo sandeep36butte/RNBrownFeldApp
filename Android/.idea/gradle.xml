@@ -30,6 +30,8 @@
             <option value="$PROJECT_DIR$/../reactnative/node_modules/@react-native/gradle-plugin/settings-plugin" />
             <option value="$PROJECT_DIR$/../reactnative/node_modules/@react-native/gradle-plugin/shared" />
             <option value="$PROJECT_DIR$/../reactnative/node_modules/@react-native/gradle-plugin/shared-testutil" />
+            <option value="$PROJECT_DIR$/../reactnative/node_modules/react-native-vision-camera/android" />
+            <option value="$PROJECT_DIR$/../reactnative/node_modules/react-native-worklets-core/android" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />
