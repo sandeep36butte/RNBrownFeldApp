@@ -10,7 +10,7 @@ pluginManagement {
         mavenCentral()
         gradlePluginPortal()
     }
-    includeBuild("../reactnative/node_modules/@react-native/gradle-plugin")
+    includeBuild("../ReactNative/node_modules/@react-native/gradle-plugin")
 }
 plugins { id("com.facebook.react.settings") }
 extensions.configure<com.facebook.react.ReactSettingsExtension> {

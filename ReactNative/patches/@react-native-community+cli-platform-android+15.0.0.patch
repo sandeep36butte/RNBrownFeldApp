@@ -1,0 +1,14 @@
+diff --git a/node_modules/@react-native-community/cli-platform-android/native_modules.gradle b/node_modules/@react-native-community/cli-platform-android/native_modules.gradle
+index 218a860..ca57c25 100644
+--- a/node_modules/@react-native-community/cli-platform-android/native_modules.gradle
++++ b/node_modules/@react-native-community/cli-platform-android/native_modules.gradle
+@@ -521,8 +521,7 @@ class ReactNativeModules {
+  * Sometimes Gradle can be called outside of JavaScript hierarchy. Detect the directory
+  * where build files of an active project are located.
+  */
+-def projectRoot = rootProject.projectDir
+-
++def projectRoot = new File(rootProject.projectDir, "../ReactNative")
+ def autoModules = new ReactNativeModules(logger, providers, projectRoot)
+ 
+ def reactNativeVersionRequireNewArchEnabled(autoModules) {

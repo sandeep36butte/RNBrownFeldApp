@@ -6,7 +6,6 @@ plugins {
     alias(libs.plugins.android.library) apply false
 }
 
-
 buildscript {
     repositories {
         google()
@@ -15,4 +14,14 @@ buildscript {
     dependencies {
         classpath("com.facebook.react:react-native-gradle-plugin")
     }
+//    extra.apply {
+//        set("buildToolsVersion", "35.0.0")
+//        set("minSdkVersion", 24)
+//        set("compileSdkVersion", 35)
+//        set("targetSdkVersion", 34)
+//        set("ndkVersion", "26.1.10909125")
+//        set("kotlinVersion", "1.9.24")
+//    }
 }
+
+apply(plugin = "com.facebook.react.rootproject")

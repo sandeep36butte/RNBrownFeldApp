@@ -15,22 +15,17 @@ react {
     autolinkLibrariesWithApp()
 }
 
-project.extensions.getByType<com.facebook.react.ReactExtension>().apply {
-    ext(project.property("hermesEnabled").toString().toBoolean())
-    ext(project.property("newArchEnabled").toString().toBoolean())
-}
-
 println("newArchEnabled12345: ${project.property("newArchEnabled").toString().toBoolean()}")
 
 val enableSeparateBuildPerCPUArchitecture = true
-
+val enableProguardInReleaseBuilds = false
 rootProject.ext.set("minSdkVersion", 24)
 rootProject.ext.set("kotlinVersion", "1.9.24")
 rootProject.ext.set("compileSdkVersion", 35)
 rootProject.ext.set("targetSdkVersion", 34)
 rootProject.ext.set("buildToolsVersion", "35.0.0")
 rootProject.ext.set("REACT_NATIVE_NODE_MODULES_DIR", file(reactNativeDirPath))
-rootProject.ext.set("reactNativeAndroidRoot", file("../../ReactNative"))
+rootProject.ext.set("reactNativeAndroidRoot", file("../../reactnative"))
 rootProject.ext.set("hermesEnabled", "true");
 rootProject.ext.set("newArchEnabled", "true");
 
@@ -63,6 +58,7 @@ android {
 
 
     buildTypes {
+        debug {  }
         release {
             isMinifyEnabled = false
             proguardFiles(
@@ -105,7 +101,6 @@ android {
         }
     }
 }
-
 dependencies {
 
     implementation(libs.androidx.core.ktx)
