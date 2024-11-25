@@ -4,14 +4,14 @@ plugins {
     id("com.facebook.react")
 }
 
-val reactNativeDirPath = "../../reactnative/node_modules/react-native"
+val reactNativeDirPath = "../../ReactNative/node_modules/react-native"
 
 react {
-    root = file("../../reactnative")
+    root = file("../../ReactNative")
     reactNativeDir = file(reactNativeDirPath)
     cliFile = file("$reactNativeDirPath/cli.js")
-    codegenDir = file("../../reactnative/node_modules/@react-native/codegen")
-    entryFile = file("../../reactnative/index.js")
+    codegenDir = file("../../ReactNative/node_modules/@react-native/codegen")
+    entryFile = file("../../ReactNative/index.js")
     autolinkLibrariesWithApp()
 }
 
@@ -25,7 +25,7 @@ rootProject.ext.set("compileSdkVersion", 35)
 rootProject.ext.set("targetSdkVersion", 34)
 rootProject.ext.set("buildToolsVersion", "35.0.0")
 rootProject.ext.set("REACT_NATIVE_NODE_MODULES_DIR", file(reactNativeDirPath))
-rootProject.ext.set("reactNativeAndroidRoot", file("../../reactnative"))
+rootProject.ext.set("reactNativeAndroidRoot", file("../../ReactNative"))
 rootProject.ext.set("hermesEnabled", "true");
 rootProject.ext.set("newArchEnabled", "true");
 
