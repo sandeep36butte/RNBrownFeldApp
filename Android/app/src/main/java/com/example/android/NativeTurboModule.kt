@@ -1,13 +1,11 @@
 package com.example.android
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Build
 import com.facebook.react.bridge.ReactApplicationContext
-import com.example.android.RNTurboModuleSpec
+import com.example.android.NativeTurboModuleSpec
 import com.facebook.react.bridge.Promise
 
-class RNTurboModule(reactContext: ReactApplicationContext): RNTurboModuleSpec(reactContext) {
+class NativeTurboModule(reactContext: ReactApplicationContext):NativeTurboModuleSpec(reactContext) {
     override fun getName() = NAME
 
     override fun getDeviceModel(promise: Promise) {
@@ -16,6 +14,6 @@ class RNTurboModule(reactContext: ReactApplicationContext): RNTurboModuleSpec(re
         promise.resolve(manufacturer + model)
     }
     companion object {
-        const val NAME = "RNTurboModule"
+        const val NAME = "NativeTurboModule"
     }
 }

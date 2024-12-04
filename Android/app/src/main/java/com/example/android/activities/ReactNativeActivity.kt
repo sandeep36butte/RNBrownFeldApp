@@ -1,10 +1,7 @@
 package com.example.android.activities
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
-import android.webkit.CookieManager
 import com.facebook.react.ReactActivity
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint
 import com.facebook.react.defaults.DefaultReactActivityDelegate

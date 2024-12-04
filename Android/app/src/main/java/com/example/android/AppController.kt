@@ -14,8 +14,7 @@ import com.facebook.react.defaults.DefaultReactHost.getDefaultReactHost
 import com.facebook.soloader.SoLoader
 import com.facebook.react.defaults.DefaultReactHost;
 import com.facebook.react.defaults.DefaultReactNativeHost
-import com.facebook.react.soloader.OpenSourceMergedSoMapping
-import com.example.android.RNTurboModulePackage
+//import com.facebook.react.soloader.OpenSourceMergedSoMapping
 
 class AppController : Application(), ReactApplication {
 
@@ -25,13 +24,21 @@ class AppController : Application(), ReactApplication {
             override fun getPackages(): List<ReactPackage> {
                 Log.d("ReactNative", "GetPackages")
                 val packages = PackageList(this).packages.toMutableList()
-                packages.add(RNTurboModulePackage());
+                packages.add(NativeTurboModulePackage());
                 return packages
             }
 
             override fun getJSMainModuleName(): String = "index"
 
-            override fun getUseDeveloperSupport(): Boolean = BuildConfig.DEBUG
+            override fun getUseDeveloperSupport(): Boolean{
+                Log.d("ReactNative", "GetDebug");
+                return BuildConfig.DEBUG
+            }
+
+            override fun getJSBundleFile(): String {
+                Log.d("REACTNATIVE", "Get Bundle")
+                return "assets://custom.android.bundle";
+            }
 
             override val isNewArchEnabled: Boolean = BuildConfig.IS_NEW_ARCHITECTURE_ENABLED
             override val isHermesEnabled: Boolean = BuildConfig.IS_HERMES_ENABLED
@@ -40,7 +47,7 @@ class AppController : Application(), ReactApplication {
     override fun onCreate() {
         super.onCreate()
         instance = this
-        SoLoader.init(this,  OpenSourceMergedSoMapping)
+        SoLoader.init(this,  false)
         if (BuildConfig.IS_NEW_ARCHITECTURE_ENABLED) {
             Log.d("ReactNative","Loading from new Architecture")
             // If you opted-in for the New Architecture, we load the native entry point for this app.
